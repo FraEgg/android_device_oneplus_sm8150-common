@@ -224,6 +224,10 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.7 \
     vendor.qti.hardware.display.allocator@1.0-service
 
+#Device Settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
@@ -399,6 +403,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# Prebuilts
+PRODUCT_PACKAGES += \
+    OnePlusCamera \
+    OnePlusGallery \
+    OnePlusCameraService
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/addon.d/51-oneplus-camera.sh:system/addon.d/51-oneplus-camera.sh  \
+    $(LOCAL_PATH)/prebuilts/etc/permissions/privapp-permissions-oem.xml:system/etc/permissions/privapp-permissions-oem.xml
+
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
@@ -415,7 +429,6 @@ PRODUCT_PACKAGES += \
 
 # tri-state key
 PRODUCT_PACKAGES += \
-    KeyHandler \
     tri-state-key_daemon
 
 # Trust HAL
