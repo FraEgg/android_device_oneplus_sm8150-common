@@ -34,7 +34,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     // Vibration effects
     private static final VibrationEffect MODE_NORMAL_EFFECT =
-            VibrationEffect.createOneShot(250, VibrationEffect.DEFAULT_AMPLITUDE);
+            VibrationEffect.get(VibrationEffect.EFFECT_HEAVY_CLICK);
     private static final VibrationEffect MODE_VIBRATION_EFFECT =
             VibrationEffect.get(VibrationEffect.EFFECT_DOUBLE_CLICK);
 
@@ -50,6 +50,10 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
+        if (event.getAction() != KeyEvent.ACTION_DOWN) {
+            return event;
+        }
+
         int scanCode = event.getScanCode();
 
         switch (scanCode) {
