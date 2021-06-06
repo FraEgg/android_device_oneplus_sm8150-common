@@ -3,6 +3,7 @@
 # ADSP
 vendor/bin/adsprpcd
 vendor/etc/init/vendor.qti.adsprpc-service.rc
+vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib/vendor.qti.hardware.dsp@1.0.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
@@ -95,12 +96,41 @@ system_ext/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 system_ext/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 
 # Camera
+system_ext/lib64/libCameraMDMHelper.so
+system_ext/lib64/vendor.oneplus.hardware.camera@1.0.so
+system_ext/lib64/vendor.oneplus.hardware.camera@1.0-adapter-helper.so
+system_ext/lib64/vendor.oneplus.hardware.CameraMDMHIDL@1.0.so
+system_ext/lib64/vendor.oneplus.hardware.CameraMDMHIDL@1.0-adapter-helper.so
+vendor/bin/hw/android.hardware.camera.provider@2.4-service_64
 vendor/bin/hw/vendor.oneplus.hardware.camera@1.0-service
 vendor/bin/hw/vendor.oneplus.hardware.CameraMDMHIDL@1.0-service
 vendor/bin/vl53l1_daemon_main
+vendor/etc/init/android.hardware.camera.provider@2.4-service_64.rc
 vendor/etc/init/vendor.oneplus.hardware.camera@1.0-service.rc
 vendor/etc/init/vendor.oneplus.hardware.CameraMDMHIDL@1.0-service.rc
-vendor/lib64/hw/com.qti.chi.override.so
+vendor/lib/hw/android.hardware.camera.provider@2.4-impl.so
+vendor/lib/android.hardware.camera.provider@2.4-external.so
+vendor/lib/android.hardware.camera.provider@2.4-legacy.so
+vendor/lib/camera.device@1.0-impl.so
+vendor/lib/camera.device@3.2-impl.so
+vendor/lib/camera.device@3.3-impl.so
+vendor/lib/camera.device@3.4-external-impl.so
+vendor/lib/camera.device@3.4-impl.so
+vendor/lib/camera.device@3.5-external-impl.so
+vendor/lib/camera.device@3.5-impl.so
+vendor/lib/camera.device@3.6-external-impl.so
+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
+vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so
+vendor/lib64/android.hardware.camera.provider@2.4-external.so
+vendor/lib64/android.hardware.camera.provider@2.4-legacy.so
+vendor/lib64/camera.device@1.0-impl.so
+vendor/lib64/camera.device@3.2-impl.so
+vendor/lib64/camera.device@3.3-impl.so
+vendor/lib64/camera.device@3.4-external-impl.so
+vendor/lib64/camera.device@3.4-impl.so
+vendor/lib64/camera.device@3.5-external-impl.so
+vendor/lib64/camera.device@3.5-impl.so
+vendor/lib64/camera.device@3.6-external-impl.so
 vendor/lib64/lib_bokehlib.so
 vendor/lib64/lib_oneplus_watermark.so
 vendor/lib64/libarcsoft_beautyshot.so
@@ -139,18 +169,20 @@ vendor/lib64/libmpbase.so
 vendor/lib64/libopcamera_native_modules.so
 vendor/lib64/libSonyIMX471RmscLibrary.so
 vendor/lib64/libstblur_capture_api.so
+vendor/lib64/libSTDualCamCaptureWT.so
 vendor/lib64/libSuperSensor.so
 vendor/lib64/libSuperSensorFallback.so
 vendor/lib64/libSuperSensorProcessor.so
 vendor/lib64/libSuperSensorProcessorCWrapper.so
+vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libtriplecam_image_optical_zoom.so
 vendor/lib64/libtriplecam_optical_zoom_control.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libvidhance.so
 vendor/lib64/libvl53l1_daemon.so
 vendor/lib64/sensors.hal.tof.so
-vendor/lib64/vendor.oneplus.hardware.camera@1.0.so
 vendor/lib64/vendor.oneplus.hardware.CameraMDMHIDL@1.0.so
+vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera firmware
 vendor/firmware/CAMERA_ICP.elf
@@ -281,7 +313,7 @@ vendor/lib64/vendor.display.color@1.5.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
 # DPM
-framework/tcmclient.jar
+system/framework/tcmclient.jar
 system_ext/bin/dpmd
 system_ext/etc/dpm/dpm.conf
 system_ext/etc/init/dpmd.rc
@@ -471,6 +503,7 @@ vendor/etc/init/ims_rtp_daemon.rc
 vendor/etc/init/imsdatadaemon.rc
 vendor/etc/init/imsqmidaemon.rc
 vendor/etc/init/imsrcsd.rc
+vendor/etc/seccomp_policy/imsrtp.policy
 vendor/lib64/com.qualcomm.qti.imscmservice@1.0.so
 vendor/lib64/com.qualcomm.qti.imscmservice@2.0.so
 vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so
@@ -563,6 +596,8 @@ system_ext/lib/libmmparser_lite.so
 system_ext/lib64/libmmosal.so
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
+vendor/etc/seccomp_policy/codec2.vendor.base.policy
+vendor/etc/seccomp_policy/codec2.vendor.ext.policy
 vendor/etc/system_properties.xml
 vendor/lib/libqcodec2.so
 vendor/lib64/libmmosal.so
@@ -726,9 +761,10 @@ vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so
 vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so
 
 # QMI
-etc/permissions/privapp-permissions-qti.xml
-etc/sysconfig/qti_whitelist.xml
+system/etc/permissions/privapp-permissions-qti.xml
+system/etc/sysconfig/qti_whitelist.xml
 vendor/bin/irsc_util
+vendor/etc/seccomp_policy/qti-systemd.policy
 vendor/etc/sec_config
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
@@ -764,7 +800,7 @@ vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmiservices.so
 
 # RIL
--framework/qcnvitems.jar
+-system/framework/qcnvitems.jar
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/etc/permissions/qti_libpermissions.xml
@@ -805,6 +841,7 @@ vendor/etc/init/ssgtzd.rc
 vendor/etc/init/vendor.oneplus.hardware.param@1.0-service.rc
 vendor/etc/init/vendor.qti.rmt_storage.rc
 vendor/etc/init/vendor.qti.tftp.rc
+vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/lib/vendor.oneplus.hardware.param@1.0.so
 vendor/lib64/deviceInfoServiceModule.so
 vendor/lib64/libconfigdb.so
@@ -1067,7 +1104,7 @@ vendor/lib64/libwvhidl.so
 vendor/bin/cnss-daemon
 
 # WiFi Display
--framework/WfdCommon.jar
+-system/framework/WfdCommon.jar
 system_ext/bin/wfdservice
 system_ext/etc/init/wfdservice.rc
 system_ext/etc/seccomp_policy/wfdservice.policy
